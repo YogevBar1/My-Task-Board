@@ -18,7 +18,7 @@
 <body onload="displayTasks()">
     <h1 class="title">My Task Board</h1>
 
-    <form onsubmit="save()">
+    <form >
         <label>Task Description:</label>
         <br>
         <textarea id="descriptionBox"></textarea>
@@ -29,14 +29,12 @@
         <input type="datetime-local" id="timeBox">
         <br><br>
 
-        <button class="btn btn-success">Add</button>
+        <button type ="button" class="btn btn-success" onclick="save()">Add</button>
         <button class="btn btn-secondary" type="reset">Clear</button>
 
     </form>
 
-    <section id="sectionTasks">
-
-    </section>
+    <section id="sectionTasks"></section>
 
 </body>
 

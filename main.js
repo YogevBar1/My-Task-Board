@@ -1,10 +1,10 @@
+"use strict";
+
 // Invoke the displayTasks function to show the tasks on the page
 displayTasks();
 
 // Invoke the validateDateTime function to perform initial validation on the date and time input
 validateDateTime();
-
-"use strict";
 
 /*
  * Saves a new task by capturing the input values, validating them, and inserting the task into storage.
@@ -43,7 +43,7 @@ function save() {
 
     // Apply fade-in class to the newly added task
     const sectionTasks = document.getElementById("sectionTasks");
-    const newTaskElement = sectionTasks.firstElementChild;
+    const newTaskElement = sectionTasks.lastElementChild;
 
     // Apply fade-in class to the newly added task
     newTaskElement.classList.add("fade-in");
@@ -59,11 +59,11 @@ function displayTasks() {
     let html = ``;
 
     // Loop through the tasks array in reverse order
-    for (let i = tasks.length - 1; i >= 0; i--) {
+    for (let i = 0; i < tasks.length; i++) {
         const taskDate = new Date(tasks[i].time);
 
         // Format the task date as "dd/mm/yyyy HH:MM"
-        const formattedDate = `${taskDate.getDate()}/${taskDate.getMonth() + 1}/${taskDate.getFullYear()}\n${taskDate.toLocaleTimeString('en-US')}`;
+        const formattedDate = `${taskDate.getDate()}/${taskDate.getMonth() + 1}/${taskDate.getFullYear()}\n${taskDate.toLocaleTimeString('en-IL', { hour: 'numeric', minute: 'numeric' })}`;
 
         // Build the HTML for each task
         html += `
@@ -112,22 +112,45 @@ function remove(index) {
 }
 
 // Validate the description and time inputs
-function validator(description, time) {
+function validator(description) {
     // Take DOM Elements
     const descriptionBox = document.getElementById("descriptionBox");
     const timeBox = document.getElementById("timeBox");
 
     if (description === "") {
-        alert("description must contain a value");
+        alert("Description must contain a value");
+        // Set focus on the text input element to bring user attention to it
         descriptionBox.focus();
+        // Return false to indicate that the validation failed
         return false;
     }
 
+    // check if  the user insert a value
     if (timeBox.value === "") {
-        // I check just that the user insert a value
-        // Because each value will be valid because only future values ​​can be selected
-        alert("time must contain a value");
+
+        alert("Time must contain a value");
+
+        // Set focus on the time input element to bring user attention to it
         timeBox.focus();
+        // Return false to indicate that the validation failed
+        return false;
+    }
+
+    // Retrieve the selected date and time from the time input element
+    const selectedDateTime = new Date(timeBox.value);
+
+    // Get the current date and time
+    const now = new Date();
+
+    // Check if the selected date and time is earlier to the current date and time
+    if (selectedDateTime < now) {
+        // Display an alert message to prompt the user to select a future date and time
+        alert("Please select a future date and time");
+
+        // Set focus on the time input element to bring user attention to it
+        timeBox.focus();
+
+        // Return false to indicate that the validation failed
         return false;
     }
 

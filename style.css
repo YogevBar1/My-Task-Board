@@ -18,7 +18,7 @@ form {
 
 #descriptionBox {
     /* Format the size of the text box: */
-    width: 220px;
+    width: 235px;
     height: 180px;
     /* Prevents the user from changing the size of the text box: */
     resize: none;
@@ -36,8 +36,7 @@ form {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    max-width: 250px;
-    /* Set a maximum width for the note */
+    max-width: 250px; /* Set a maximum width for the note */
     /* Add box-sizing property to include padding and border in the width calculation */
     box-sizing: border-box;
     width: 300px;
@@ -60,7 +59,6 @@ form {
 }
 
 @keyframes fadeIn {
-
     /* Define an animation for fading in */
     from {
         opacity: 0;
@@ -73,7 +71,7 @@ form {
 
 .fade-in {
     /* Apply the fade-in animation to elements */
-    animation: fadeIn 4.5s ease-in-out;
+    animation: fadeIn 3.5s ease-in-out;
 }
 
 .remove {
@@ -105,17 +103,14 @@ form {
     overflow-y: auto;
     word-wrap: break-word;
     /* Allow long words to wrap within the fixed width */
-
     position: relative;
     z-index: 1;
     /* Bring the content to the front */
     padding: 5px 15px 10px 30px;
     box-sizing: border-box;
     color: black;
-
     /* Takes care that the red pin does not go over the text */
     margin-top: 10px;
-
 }
 
 @font-face {
@@ -126,7 +121,8 @@ form {
 
 .title {
     /* Apply styling to the title element */
-    font-family: myFirstFont;   /* Set the font family to 'myFirstFont' */
+    font-family: myFirstFont;
+    /* Set the font family to 'myFirstFont' */
     text-align: center;
 }
 
